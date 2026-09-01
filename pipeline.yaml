@@ -54,12 +54,14 @@ spec:
       workspaces:
         - name: source
           workspace: pipeline-workspace
+        - name: dockerconfig
+          workspace: dockerconfig-ws
       taskRef:
         name: buildah
         kind: ClusterTask
       params:
       - name: IMAGE
-        value: "us.icr.io/$(context.pipelineRun.namespace)/$(params.app-name)"
+        value: "us.icr.io/$(context.pipelineRun.namespace)/$(params.build-image)"
       runAfter:
         - tests
 
